@@ -96,8 +96,13 @@ body {
   background: var(--clr-white);
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100vw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 img, video {
@@ -351,6 +356,11 @@ section {
 
   .section-heading {
     font-size: clamp(var(--fs-2xl), 8vw, var(--fs-3xl));
+  }
+
+  [data-animate="fade-left"],
+  [data-animate="fade-right"] {
+    transform: translateY(32px);
   }
 }
 
