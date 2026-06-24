@@ -1,0 +1,191 @@
+---
+---
+
+<section class="about" id="o-firmie" aria-labelledby="about-heading">
+  <div class="container about__grid">
+    <!-- Image column -->
+    <div class="about__image-wrap" data-animate="fade-left">
+      <img
+        src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80"
+        alt="Eleganckie wnętrze wykończone przez DamBud"
+        class="about__img"
+        loading="lazy"
+        width="600"
+        height="720"
+      />
+      <!-- Badge -->
+      <div class="about__badge" aria-label="10 lat doświadczenia">
+        <span class="about__badge-number">10+</span>
+        <span class="about__badge-label">lat doświadczenia</span>
+      </div>
+    </div>
+
+    <!-- Text column -->
+    <div class="about__content">
+      <p class="section-label" data-animate="fade-up">O Firmie</p>
+
+      <h2 id="about-heading" class="section-heading" data-animate="fade-up" data-animate-delay="100">
+        Zaufanie budowane<br/>
+        <span>Projektem po<br/>Projekcie</span>
+      </h2>
+
+      <p class="about__text" data-animate="fade-up" data-animate-delay="200">
+        DamBud to firma specjalizująca się w kompleksowych wykończeniach wnętrz.
+        Realizujemy projekty z najwyższą starannością, dbając o każdy detal
+        i terminowość wykonania.
+      </p>
+      <p class="about__text" data-animate="fade-up" data-animate-delay="300">
+        Damian Brzeski osobiście nadzoruje każdy projekt, gwarantując
+        indywidualne podejście i pełną kontrolę jakości na każdym etapie prac
+        remontowych i wykończeniowych.
+      </p>
+
+      <!-- Stats row -->
+      <div class="about__stats" data-animate="fade-up" data-animate-delay="400">
+        <div class="about__stat">
+          <span class="about__stat-number" data-count-about="200">200+</span>
+          <span class="about__stat-label">Projektów</span>
+        </div>
+        <div class="about__stat-divider"></div>
+        <div class="about__stat">
+          <span class="about__stat-number">10+</span>
+          <span class="about__stat-label">Lat</span>
+        </div>
+        <div class="about__stat-divider"></div>
+        <div class="about__stat">
+          <span class="about__stat-number">5★</span>
+          <span class="about__stat-label">Opinie</span>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div data-animate="fade-up" data-animate-delay="500">
+        <a href="#kontakt" class="btn btn-primary">
+          Bezpłatna konsultacja
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: clamp(var(--space-16), 8vw, var(--space-32)) 0;
+    overflow: hidden;
+  }
+
+  .about__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(var(--space-12), 6vw, var(--space-24));
+    align-items: center;
+  }
+
+  /* Image */
+  .about__image-wrap {
+    position: relative;
+  }
+
+  .about__img {
+    width: 100%;
+    height: clamp(400px, 60vw, 680px);
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    display: block;
+  }
+
+  .about__badge {
+    position: absolute;
+    bottom: var(--space-8);
+    right: var(--space-8);
+    background: var(--clr-orange);
+    color: var(--clr-white);
+    padding: var(--space-6) var(--space-8);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    box-shadow: var(--shadow-orange);
+  }
+
+  .about__badge-number {
+    display: block;
+    font-size: var(--fs-3xl);
+    font-weight: var(--fw-black);
+    line-height: 1;
+  }
+
+  .about__badge-label {
+    display: block;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    opacity: 0.9;
+    margin-top: var(--space-1);
+  }
+
+  /* Content */
+  .about__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .about__text {
+    font-size: var(--fs-md);
+    color: var(--clr-text-muted);
+    line-height: 1.7;
+  }
+
+  /* Stats */
+  .about__stats {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    padding: var(--space-6) 0;
+    border-top: 1px solid var(--clr-border);
+    border-bottom: 1px solid var(--clr-border);
+  }
+
+  .about__stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .about__stat-number {
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-black);
+    color: var(--clr-text);
+    line-height: 1;
+  }
+
+  .about__stat-label {
+    font-size: var(--fs-sm);
+    color: var(--clr-text-muted);
+    font-weight: var(--fw-medium);
+  }
+
+  .about__stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--clr-border);
+    flex-shrink: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .about__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about__image-wrap {
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .about__badge {
+      bottom: var(--space-4);
+      right: var(--space-4);
+      transform: none;
+    }
+  }
+</style>

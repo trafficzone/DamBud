@@ -1,0 +1,260 @@
+---
+const services = [
+  {
+    icon: `<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>`,
+    name: 'Kompleksowe wykończenia',
+    desc: 'Mieszkań i domów od surowego stanu do efektu końcowego z pełnym nadzorem.',
+  },
+  {
+    icon: `<path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/>`,
+    name: 'Malowanie ścian i sufitów',
+    desc: 'Perfekcyjne pokrycie farbami dekoracyjnymi, strukturalnymi i matowymi.',
+  },
+  {
+    icon: `<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>`,
+    name: 'Gładzie gipsowe',
+    desc: 'Precyzyjne wyrównanie powierzchni zapewniające idealną bazę pod malowanie.',
+  },
+  {
+    icon: `<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>`,
+    name: 'Panele i podłogi',
+    desc: 'Układanie paneli laminowanych, winylowych i podłóg z drewna litego.',
+  },
+  {
+    icon: `<rect x="2" y="3" width="8" height="18" rx="1"/><path d="M10 7h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/><path d="M22 7l-3-3v14l3-3"/>`,
+    name: 'Montaż drzwi',
+    desc: 'Drzwi wewnętrzne i zewnętrzne z regulacją ościeżnicy i futryny.',
+  },
+  {
+    icon: `<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>`,
+    name: 'Płytki i glazura',
+    desc: 'Precyzyjne układanie w dowolne wzory — duże formaty, mozaiki, jodełka.',
+  },
+  {
+    icon: `<path d="M2 20h20"/><path d="M6 20V10"/><path d="M18 20V10"/><path d="M10 20v-6"/><path d="M14 20v-6"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/>`,
+    name: 'Zabudowy karton-gips',
+    desc: 'Ścianki działowe, nisze, obudowy grzejników i szafy na wymiar.',
+  },
+  {
+    icon: `<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/>`,
+    name: 'Sufity podwieszane',
+    desc: 'Systemowe i gipsowe z dowolną architekturą oświetlenia LED.',
+  },
+  {
+    icon: `<path d="M4 22V12a8 8 0 0 1 16 0v10"/><path d="M2 22h20"/><path d="M7 22v-5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v5"/>`,
+    name: 'Remonty łazienek',
+    desc: 'Kompleksowa przebudowa — od instalacji hydraulicznej po wyposażenie.',
+  },
+  {
+    icon: `<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>`,
+    name: 'Adaptacje wnętrz',
+    desc: 'Wyburzenia, zmiany układu, tworzenie nowych, funkcjonalnych przestrzeni.',
+  },
+];
+---
+
+<section class="services" id="uslugi" aria-labelledby="services-heading">
+  <div class="container">
+    <!-- Header -->
+    <div class="services__header">
+      <div class="services__header-left">
+        <p class="section-label" data-animate="fade-up">Nasze Usługi</p>
+        <h2 id="services-heading" class="section-heading" data-animate="fade-up" data-animate-delay="100">
+          Pełny zakres<br/>
+          <span>Wykończeń Wnętrz</span>
+        </h2>
+      </div>
+      <p class="services__header-text" data-animate="fade-right" data-animate-delay="200">
+        Kompleksowa obsługa — od pierwszej<br/>
+        konsultacji aż po odbiór gotowego wnętrza.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="services__grid" role="list">
+      {services.map((service, i) => (
+        <article
+          class="services__card"
+          role="listitem"
+          data-animate="fade-up"
+          data-animate-delay={String(Math.min(i * 60, 600))}
+        >
+          <div class="icon-box services__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <Fragment set:html={service.icon} />
+            </svg>
+          </div>
+          <h3 class="services__card-name">{service.name}</h3>
+          <p class="services__card-desc">{service.desc}</p>
+        </article>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="services__cta" data-animate="fade-up">
+      <a href="#kontakt" class="btn btn-outline-dark">
+        Zapytaj o wycenę
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: clamp(var(--space-16), 8vw, var(--space-32)) 0;
+    background: var(--clr-beige);
+  }
+
+  /* Header */
+  .services__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-8);
+    margin-bottom: clamp(var(--space-10), 5vw, var(--space-16));
+    flex-wrap: wrap;
+  }
+
+  .services__header-left {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .services__header-text {
+    font-size: var(--fs-md);
+    color: var(--clr-text-muted);
+    line-height: 1.6;
+    text-align: right;
+    padding-bottom: var(--space-2);
+  }
+
+  /* Grid */
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  /* Card */
+  .services__card {
+    padding: var(--space-8) var(--space-6);
+    background: var(--clr-white);
+    border-right: 1px solid var(--clr-border);
+    border-bottom: 1px solid var(--clr-border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+    cursor: default;
+  }
+
+  .services__card:nth-child(5n) {
+    border-right: none;
+  }
+
+  .services__card:nth-last-child(-n+5) {
+    border-bottom: none;
+  }
+
+  .services__card:hover {
+    background: var(--clr-white);
+    box-shadow: inset 0 0 0 2px var(--clr-orange);
+    z-index: 1;
+  }
+
+  .services__card:hover .services__icon {
+    background: var(--clr-orange);
+  }
+
+  .services__card:hover .services__icon svg {
+    stroke: var(--clr-white);
+    color: var(--clr-white);
+  }
+
+  .services__icon {
+    transition: background var(--transition);
+  }
+
+  .services__card-name {
+    font-size: var(--fs-base);
+    font-weight: var(--fw-bold);
+    color: var(--clr-text);
+    line-height: 1.3;
+  }
+
+  .services__card-desc {
+    font-size: var(--fs-sm);
+    color: var(--clr-text-muted);
+    line-height: 1.6;
+  }
+
+  /* CTA */
+  .services__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(var(--space-8), 4vw, var(--space-12));
+  }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .services__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .services__card:nth-child(5n) {
+      border-right: 1px solid var(--clr-border);
+    }
+
+    .services__card:nth-child(3n) {
+      border-right: none;
+    }
+
+    .services__card:nth-last-child(-n+5) {
+      border-bottom: 1px solid var(--clr-border);
+    }
+
+    .services__card:nth-last-child(-n+3):not(:nth-child(3n+1):not(:nth-last-child(-n+3))) {
+      border-bottom: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .services__header-text {
+      text-align: left;
+    }
+
+    .services__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .services__card:nth-child(3n) {
+      border-right: 1px solid var(--clr-border);
+    }
+
+    .services__card:nth-child(2n) {
+      border-right: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .services__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .services__card {
+      border-right: none;
+    }
+
+    .services__card:nth-last-child(1) {
+      border-bottom: none;
+    }
+  }
+</style>

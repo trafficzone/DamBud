@@ -1,0 +1,342 @@
+---
+const { pathname } = Astro.url;
+const isHome = pathname === '/' || pathname === '';
+const p = isHome ? '' : '/';
+
+const navLinks = [
+  { label: 'O Firmie',    href: `${p}#o-firmie`   },
+  { label: 'Usługi',      href: `${p}#uslugi`      },
+  { label: 'Oferta',      href: '/oferta'           },
+  { label: 'Realizacje',  href: `${p}#realizacje`  },
+  { label: 'Opinie',      href: `${p}#opinie`      },
+  { label: 'Kontakt',     href: `${p}#kontakt`     },
+];
+---
+
+<header class="nav" id="nav" role="banner">
+  <div class="container nav__inner">
+    <!-- Logo -->
+    <a href="/" class="nav__logo" aria-label="DamBud strona główna">
+      <div class="nav__logo-icon">DB</div>
+      <div class="nav__logo-text">
+        <span class="nav__logo-name">DAMBUD</span>
+        <span class="nav__logo-sub">Wykończenia Wnętrz</span>
+      </div>
+    </a>
+
+    <!-- Desktop nav links -->
+    <nav class="nav__links" aria-label="Nawigacja główna">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class={`nav__link${pathname.startsWith(link.href) && link.href !== '/' ? ' nav__link--active' : ''}`}
+        >{link.label}</a>
+      ))}
+    </nav>
+
+    <!-- CTA right -->
+    <div class="nav__cta">
+      <a href="tel:+48794722003" class="nav__phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.4 16l.02.92z"/>
+        </svg>
+        +48 794 722 003
+      </a>
+      <a href="#kontakt" class="btn btn-primary">Darmowa wycena</a>
+    </div>
+
+    <!-- Hamburger (mobile) -->
+    <button class="nav__hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="nav__mobile" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu mobilne">
+    <nav aria-label="Nawigacja mobilna">
+      {navLinks.map((link) => (
+        <a href={link.href} class="nav__mobile-link">{link.label}</a>
+      ))}
+    </nav>
+    <div class="nav__mobile-footer">
+      <a href="tel:+48794722003" class="nav__mobile-phone">+48 794 722 003</a>
+      <a href="#kontakt" class="btn btn-primary" style="width:100%;justify-content:center;">Darmowa wycena</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--nav-height);
+    transition: background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+    background: transparent;
+  }
+
+  .nav.scrolled {
+    background: rgba(17, 17, 17, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+
+  .nav__inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  /* Logo */
+  .nav__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+
+  .nav__logo-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--clr-orange);
+    color: var(--clr-white);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.05em;
+  }
+
+  .nav__logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .nav__logo-name {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-black);
+    color: var(--clr-white);
+    letter-spacing: 0.12em;
+  }
+
+  .nav__logo-sub {
+    font-size: 0.65rem;
+    font-weight: var(--fw-medium);
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Nav links */
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    margin-left: auto;
+  }
+
+  .nav__link {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semi);
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.03em;
+    padding: var(--space-2) 0;
+    position: relative;
+    transition: color var(--transition);
+  }
+
+  .nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--clr-orange);
+    transition: width var(--transition);
+  }
+
+  .nav__link:hover {
+    color: var(--clr-white);
+  }
+
+  .nav__link:hover::after,
+  .nav__link--active::after {
+    width: 100%;
+  }
+
+  .nav__link--active {
+    color: var(--clr-white);
+  }
+
+  /* CTA right */
+  .nav__cta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    flex-shrink: 0;
+  }
+
+  .nav__phone {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semi);
+    color: rgba(255,255,255,0.85);
+    transition: color var(--transition);
+  }
+
+  .nav__phone:hover {
+    color: var(--clr-orange);
+  }
+
+  /* Hamburger */
+  .nav__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 28px;
+    padding: var(--space-2);
+    margin-left: auto;
+  }
+
+  .nav__hamburger span {
+    display: block;
+    height: 2px;
+    background: var(--clr-white);
+    border-radius: 2px;
+    transition: all var(--transition);
+    transform-origin: center;
+  }
+
+  .nav__hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav__hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .nav__hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile menu */
+  .nav__mobile {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--clr-dark);
+    padding: calc(var(--nav-height) + var(--space-8)) var(--container-padding) var(--space-8);
+    flex-direction: column;
+    gap: var(--space-4);
+    z-index: -1;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav__mobile.open {
+    transform: translateX(0);
+  }
+
+  .nav__mobile nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    flex: 1;
+  }
+
+  .nav__mobile-link {
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-bold);
+    color: var(--clr-white);
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: color var(--transition), padding-left var(--transition);
+  }
+
+  .nav__mobile-link:hover {
+    color: var(--clr-orange);
+    padding-left: var(--space-3);
+  }
+
+  .nav__mobile-footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-top: var(--space-8);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav__mobile-phone {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    color: var(--clr-white);
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .nav__phone { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    .nav__links  { display: none; }
+    .nav__cta    { display: none; }
+    .nav__hamburger { display: flex; }
+    .nav__mobile { display: flex; }
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('nav')!;
+  const hamburger = document.getElementById('hamburger')!;
+  const mobileMenu = document.getElementById('mobile-menu')!;
+
+  // Scroll behavior
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  };
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+
+  // Hamburger toggle
+  const toggleMenu = (open: boolean) => {
+    hamburger.classList.toggle('open', open);
+    mobileMenu.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.contains('open');
+    toggleMenu(!isOpen);
+  });
+
+  // Close on link click
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => toggleMenu(false));
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (mobileMenu.classList.contains('open') &&
+        !mobileMenu.contains(e.target as Node) &&
+        !hamburger.contains(e.target as Node)) {
+      toggleMenu(false);
+    }
+  });
+</script>

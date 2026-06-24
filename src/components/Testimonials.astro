@@ -1,0 +1,440 @@
+---
+const testimonials = [
+  {
+    initials: 'MA',
+    name: 'Marek i Anna S.',
+    location: 'Kraków · Wykończenie mieszkania',
+    rating: 5,
+    text: 'Terminowo i bez żadnych problemów. Pan Damian dokładnie wyjaśnił każdy etap prac i dotrzymał wszystkich ustaleń. Jakość wykończenia jest na bardzo wysokim poziomie – widać dbałość o każdy szczegół.',
+  },
+  {
+    initials: 'KW',
+    name: 'Katarzyna W.',
+    location: 'Warszawa · Remont łazienki',
+    rating: 5,
+    text: 'Profesjonalne wykonanie i świetny kontakt przez cały czas trwania remontu. Ekipa rzetelna, schludna i terminowa. Efekt przeszedł nasze najśmielsze oczekiwania.',
+  },
+  {
+    initials: 'TK',
+    name: 'Tomasz K.',
+    location: 'Piaseczno · Wykończenie domu',
+    rating: 5,
+    text: 'Efekt końcowy przeszedł nasze oczekiwania. Szczególnie doceniam dbałość o detale i czystość na placu budowy. Zdecydowanie polecam każdemu, kto szuka solidnej ekipy.',
+  },
+  {
+    initials: 'EP',
+    name: 'Ewa i Piotr M.',
+    location: 'Pruszków · Kompleksowe wykończenie',
+    rating: 5,
+    text: 'Jesteśmy zachwyceni! Kompleksowe wykończenie naszego mieszkania przebiegło sprawnie i bez stresu. Pan Damian zawsze był dostępny i na bieżąco informował o postępach prac.',
+  },
+];
+---
+
+<section class="testimonials" id="opinie" aria-labelledby="testimonials-heading">
+  <div class="container testimonials__inner">
+    <!-- Left: main testimonial -->
+    <div class="testimonials__main">
+      <p class="section-label" data-animate="fade-up">Opinie Klientów</p>
+      <h2 id="testimonials-heading" class="section-heading" data-animate="fade-up" data-animate-delay="100">
+        Co mówią<br/>
+        <span>Nasi Klienci</span>
+      </h2>
+
+      <!-- Quote -->
+      <div class="testimonials__quote-wrap" data-animate="fade-up" data-animate-delay="200">
+        <div class="testimonials__quote-icon" aria-hidden="true">,,</div>
+        <blockquote class="testimonials__quote" id="main-quote">
+          {testimonials[0].text}
+        </blockquote>
+        <div class="testimonials__author">
+          <div class="testimonials__avatar" id="main-avatar" style={`background: var(--clr-orange)`}>
+            {testimonials[0].initials}
+          </div>
+          <div>
+            <p class="testimonials__name" id="main-name">{testimonials[0].name}</p>
+            <p class="testimonials__location" id="main-location">{testimonials[0].location}</p>
+          </div>
+          <div class="testimonials__stars" id="main-stars" aria-label="Ocena 5 na 5 gwiazdek">
+            {'★'.repeat(5)}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: counter + sidebar -->
+    <div class="testimonials__right" data-animate="fade-right" data-animate-delay="200">
+      <!-- Counter + nav -->
+      <div class="testimonials__nav">
+        <div class="testimonials__counter">
+          <span class="testimonials__counter-current" id="counter-current">01</span>
+          <span class="testimonials__counter-sep"> / </span>
+          <span class="testimonials__counter-total">{String(testimonials.length).padStart(2, '0')}</span>
+        </div>
+        <div class="testimonials__dots" id="testimonials-dots" aria-label="Wskaźniki slajdów">
+          {testimonials.map((_, i) => (
+            <button
+              class={`testimonials__dot${i === 0 ? ' active' : ''}`}
+              data-index={i}
+              aria-label={`Przejdź do opinii ${i + 1}`}
+            ></button>
+          ))}
+        </div>
+        <div class="testimonials__arrows">
+          <button class="testimonials__arrow" id="prev-btn" aria-label="Poprzednia opinia">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="testimonials__arrow testimonials__arrow--active" id="next-btn" aria-label="Następna opinia">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sidebar list -->
+      <div class="testimonials__sidebar" id="testimonials-sidebar">
+        {testimonials.slice(1, 3).map((t, i) => (
+          <button
+            class="testimonials__card"
+            data-index={i + 1}
+            aria-label={`Pokaż opinię od ${t.name}`}
+          >
+            <div class="testimonials__card-header">
+              <div class="testimonials__card-avatar">{t.initials}</div>
+              <span class="testimonials__card-name">{t.name}</span>
+            </div>
+            <p class="testimonials__card-text">{t.text.slice(0, 120)}…</p>
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: clamp(var(--space-16), 8vw, var(--space-32)) 0;
+    background: var(--clr-beige);
+  }
+
+  .testimonials__inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(var(--space-10), 6vw, var(--space-20));
+    align-items: start;
+  }
+
+  /* Main */
+  .testimonials__main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .testimonials__quote-wrap {
+    position: relative;
+  }
+
+  .testimonials__quote-icon {
+    font-size: 7rem;
+    line-height: 0.6;
+    color: var(--clr-orange);
+    opacity: 0.15;
+    font-family: Georgia, serif;
+    user-select: none;
+    margin-bottom: var(--space-4);
+  }
+
+  .testimonials__quote {
+    font-size: clamp(var(--fs-md), 2vw, var(--fs-lg));
+    font-weight: var(--fw-medium);
+    color: var(--clr-text);
+    line-height: 1.7;
+    margin-bottom: var(--space-8);
+    font-style: normal;
+    transition: opacity 0.35s ease;
+  }
+
+  .testimonials__quote.fading {
+    opacity: 0;
+  }
+
+  .testimonials__author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .testimonials__avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-black);
+    color: var(--clr-white);
+    flex-shrink: 0;
+    letter-spacing: 0.03em;
+  }
+
+  .testimonials__name {
+    font-size: var(--fs-base);
+    font-weight: var(--fw-bold);
+    color: var(--clr-text);
+  }
+
+  .testimonials__location {
+    font-size: var(--fs-sm);
+    color: var(--clr-text-muted);
+    margin-top: 2px;
+  }
+
+  .testimonials__stars {
+    margin-left: auto;
+    color: var(--clr-orange);
+    font-size: var(--fs-md);
+    letter-spacing: 2px;
+  }
+
+  /* Right */
+  .testimonials__right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding-top: var(--space-12);
+  }
+
+  .testimonials__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .testimonials__counter {
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-black);
+    color: var(--clr-text);
+  }
+
+  .testimonials__counter-current {
+    color: var(--clr-orange);
+  }
+
+  .testimonials__counter-sep,
+  .testimonials__counter-total {
+    color: var(--clr-text-light);
+    font-size: var(--fs-base);
+  }
+
+  .testimonials__dots {
+    display: flex;
+    gap: var(--space-2);
+    margin-left: var(--space-2);
+  }
+
+  .testimonials__dot {
+    width: 24px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--clr-border);
+    cursor: pointer;
+    transition: background var(--transition), width var(--transition);
+  }
+
+  .testimonials__dot.active {
+    background: var(--clr-orange);
+    width: 36px;
+  }
+
+  .testimonials__arrows {
+    display: flex;
+    gap: var(--space-2);
+    margin-left: auto;
+  }
+
+  .testimonials__arrow {
+    width: 40px;
+    height: 40px;
+    border: 1.5px solid var(--clr-border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--clr-text-muted);
+    transition: all var(--transition);
+    cursor: pointer;
+  }
+
+  .testimonials__arrow:hover,
+  .testimonials__arrow--active {
+    background: var(--clr-orange);
+    border-color: var(--clr-orange);
+    color: var(--clr-white);
+  }
+
+  /* Sidebar */
+  .testimonials__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .testimonials__card {
+    background: var(--clr-white);
+    border-radius: var(--radius-md);
+    padding: var(--space-5) var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    cursor: pointer;
+    text-align: left;
+    border: 1.5px solid transparent;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .testimonials__card:hover {
+    border-color: var(--clr-orange);
+    box-shadow: var(--shadow-md);
+  }
+
+  .testimonials__card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .testimonials__card-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 3px;
+    background: rgba(229,90,0,0.12);
+    color: var(--clr-orange);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .testimonials__card-name {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    color: var(--clr-text);
+  }
+
+  .testimonials__card-text {
+    font-size: var(--fs-sm);
+    color: var(--clr-text-muted);
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .testimonials__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonials__right {
+      padding-top: 0;
+    }
+  }
+</style>
+
+<script>
+  const testimonials = [
+    {
+      initials: 'MA',
+      name: 'Marek i Anna S.',
+      location: 'Kraków · Wykończenie mieszkania',
+      text: 'Terminowo i bez żadnych problemów. Pan Damian dokładnie wyjaśnił każdy etap prac i dotrzymał wszystkich ustaleń. Jakość wykończenia jest na bardzo wysokim poziomie – widać dbałość o każdy szczegół.',
+    },
+    {
+      initials: 'KW',
+      name: 'Katarzyna W.',
+      location: 'Warszawa · Remont łazienki',
+      text: 'Profesjonalne wykonanie i świetny kontakt przez cały czas trwania remontu. Ekipa rzetelna, schludna i terminowa. Efekt przeszedł nasze najśmielsze oczekiwania.',
+    },
+    {
+      initials: 'TK',
+      name: 'Tomasz K.',
+      location: 'Piaseczno · Wykończenie domu',
+      text: 'Efekt końcowy przeszedł nasze oczekiwania. Szczególnie doceniam dbałość o detale i czystość na placu budowy. Zdecydowanie polecam każdemu, kto szuka solidnej ekipy.',
+    },
+    {
+      initials: 'EP',
+      name: 'Ewa i Piotr M.',
+      location: 'Pruszków · Kompleksowe wykończenie',
+      text: 'Jesteśmy zachwyceni! Kompleksowe wykończenie naszego mieszkania przebiegło sprawnie i bez stresu. Pan Damian zawsze był dostępny i na bieżąco informował o postępach prac.',
+    },
+  ];
+
+  let current = 0;
+
+  const quoteEl     = document.getElementById('main-quote')!;
+  const nameEl      = document.getElementById('main-name')!;
+  const locationEl  = document.getElementById('main-location')!;
+  const counterEl   = document.getElementById('counter-current')!;
+  const dots        = document.querySelectorAll<HTMLElement>('.testimonials__dot');
+  const cards       = document.querySelectorAll<HTMLElement>('.testimonials__card');
+
+  const goTo = (index: number) => {
+    current = (index + testimonials.length) % testimonials.length;
+    const t = testimonials[current];
+
+    // Fade out
+    quoteEl.classList.add('fading');
+
+    setTimeout(() => {
+      quoteEl.textContent = t.text;
+      nameEl.textContent  = t.name;
+      locationEl.textContent = t.location;
+      counterEl.textContent  = String(current + 1).padStart(2, '0');
+
+      // Update dots
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+
+      // Update sidebar cards
+      const sidebarIndices = [(current + 1) % testimonials.length, (current + 2) % testimonials.length];
+      cards.forEach((card, ci) => {
+        const t2 = testimonials[sidebarIndices[ci]];
+        if (!t2) return;
+        const header = card.querySelector('.testimonials__card-name');
+        const txt    = card.querySelector('.testimonials__card-text');
+        const avatar = card.querySelector('.testimonials__card-avatar');
+        if (header) header.textContent = t2.name;
+        if (txt)    txt.textContent    = t2.text.slice(0, 120) + '…';
+        if (avatar) avatar.textContent = t2.initials;
+        (card as HTMLElement).dataset.index = String(sidebarIndices[ci]);
+      });
+
+      quoteEl.classList.remove('fading');
+    }, 300);
+  };
+
+  document.getElementById('next-btn')?.addEventListener('click', () => goTo(current + 1));
+  document.getElementById('prev-btn')?.addEventListener('click', () => goTo(current - 1));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => goTo(i));
+  });
+
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const idx = parseInt((card as HTMLElement).dataset.index || '0', 10);
+      goTo(idx);
+    });
+  });
+
+  // Auto-advance
+  let autoTimer = setInterval(() => goTo(current + 1), 6000);
+
+  const section = document.querySelector('.testimonials')!;
+  section.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  section.addEventListener('mouseleave', () => {
+    autoTimer = setInterval(() => goTo(current + 1), 6000);
+  });
+</script>

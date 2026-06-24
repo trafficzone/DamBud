@@ -1,0 +1,256 @@
+---
+const categories = ['Wszystkie', 'Łazienki', 'Salony', 'Kuchnie', 'Mieszkania', 'Domy'];
+
+const projects = [
+  { cat: 'Łazienki',   img: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80', alt: 'Nowoczesna łazienka z wanną wolnostojącą',   tall: true  },
+  { cat: 'Salony',     img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80', alt: 'Elegancki salon z akcentami drewna',          tall: false },
+  { cat: 'Kuchnie',    img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80', alt: 'Nowoczesna kuchnia z wyspą',                    tall: false },
+  { cat: 'Salony',     img: 'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=600&q=80', alt: 'Salon z podwieszanym sufitem LED',             tall: false },
+  { cat: 'Mieszkania', img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80', alt: 'Wykończone mieszkanie w Warszawie',            tall: false },
+  { cat: 'Łazienki',  img: 'https://images.unsplash.com/photo-1620626011761-996317702519?w=600&q=80', alt: 'Łazienka z prysznicem walk-in',                tall: true  },
+  { cat: 'Domy',       img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80', alt: 'Wykończenie domu jednorodzinnego',               tall: false },
+  { cat: 'Kuchnie',    img: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=600&q=80', alt: 'Kuchnia otwarta na salon',                       tall: false },
+  { cat: 'Mieszkania', img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80', alt: 'Sypialnia z zabudową karton-gips',             tall: false },
+];
+---
+
+<section class="portfolio" id="realizacje" aria-labelledby="portfolio-heading">
+  <div class="container">
+    <!-- Header -->
+    <div class="portfolio__header">
+      <div>
+        <p class="section-label" data-animate="fade-up">Realizacje</p>
+        <h2 id="portfolio-heading" class="section-heading" data-animate="fade-up" data-animate-delay="100">
+          Nasze ostatnie<br/>
+          <span>Projekty</span>
+        </h2>
+      </div>
+
+      <!-- Filter -->
+      <div class="portfolio__filters" role="tablist" aria-label="Filtruj realizacje" data-animate="fade-right" data-animate-delay="200">
+        {categories.map((cat, i) => (
+          <button
+            class={`portfolio__filter${i === 0 ? ' active' : ''}`}
+            data-filter={cat}
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls="portfolio-grid"
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="portfolio__grid" id="portfolio-grid" role="tabpanel">
+      {projects.map((project, i) => (
+        <div
+          class={`portfolio__item${project.tall ? ' portfolio__item--tall' : ''}`}
+          data-category={project.cat}
+          data-animate="fade-scale"
+          data-animate-delay={String(Math.min(i * 60, 500))}
+        >
+          <img
+            src={project.img}
+            alt={project.alt}
+            loading="lazy"
+            width="600"
+            height={project.tall ? '800' : '400'}
+            class="portfolio__img"
+          />
+          <div class="portfolio__overlay" aria-hidden="true">
+            <span class="portfolio__cat">{project.cat}</span>
+          </div>
+          <span class="portfolio__badge">{project.cat}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Load more -->
+    <div class="portfolio__more" data-animate="fade-up">
+      <a href="#kontakt" class="btn btn-outline-dark">
+        Zobacz wszystkie realizacje
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .portfolio {
+    padding: clamp(var(--space-16), 8vw, var(--space-32)) 0;
+    background: var(--clr-white);
+  }
+
+  /* Header */
+  .portfolio__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-6);
+    margin-bottom: clamp(var(--space-8), 4vw, var(--space-12));
+    flex-wrap: wrap;
+  }
+
+  /* Filters */
+  .portfolio__filters {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .portfolio__filter {
+    padding: var(--space-2) var(--space-5);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semi);
+    color: var(--clr-text-muted);
+    border: 1.5px solid var(--clr-border);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .portfolio__filter:hover,
+  .portfolio__filter.active {
+    background: var(--clr-orange);
+    border-color: var(--clr-orange);
+    color: var(--clr-white);
+  }
+
+  /* Grid */
+  .portfolio__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 280px;
+    gap: var(--space-3);
+  }
+
+  /* Item */
+  .portfolio__item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  .portfolio__item--tall {
+    grid-row: span 2;
+  }
+
+  .portfolio__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .portfolio__item:hover .portfolio__img {
+    transform: scale(1.06);
+  }
+
+  /* Overlay */
+  .portfolio__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity var(--transition);
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-5);
+  }
+
+  .portfolio__item:hover .portfolio__overlay {
+    opacity: 1;
+  }
+
+  .portfolio__cat {
+    color: var(--clr-white);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semi);
+    letter-spacing: 0.05em;
+  }
+
+  /* Badge */
+  .portfolio__badge {
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+    background: var(--clr-orange);
+    color: var(--clr-white);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* Hidden items during filter */
+  .portfolio__item.hidden {
+    display: none;
+  }
+
+  /* More button */
+  .portfolio__more {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(var(--space-8), 4vw, var(--space-12));
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .portfolio__grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 240px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .portfolio__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .portfolio__grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 260px;
+    }
+
+    .portfolio__item--tall {
+      grid-row: span 1;
+    }
+  }
+</style>
+
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.portfolio__filter');
+  const items = document.querySelectorAll<HTMLElement>('.portfolio__item');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter!;
+
+      // Update active button
+      filterBtns.forEach((b) => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      // Filter items with animation
+      items.forEach((item) => {
+        const cat = item.dataset.category!;
+        if (filter === 'Wszystkie' || cat === filter) {
+          item.classList.remove('hidden');
+          item.style.animation = 'fadeIn 0.35s ease forwards';
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>

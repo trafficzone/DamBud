@@ -1,0 +1,143 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const {
+  title = 'DamBud – Profesjonalne Wykończenia Wnętrz Warszawa | Damian Brzeski',
+  description = 'Kompleksowe wykończenia wnętrz w Warszawie i okolicach. Malowanie, gładzie gipsowe, płytki, podłogi, łazienki. Ponad 200 zrealizowanych projektów. Darmowa wycena.',
+  ogImage = '/images/og-image.jpg',
+  canonical = Astro.url.href,
+} = Astro.props;
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "DamBud Wykończenia Wnętrz",
+  "description": description,
+  "url": "https://dambud.pl",
+  "telephone": "+48794722003",
+  "email": "damianbrzeski1@onet.pl",
+  "founder": {
+    "@type": "Person",
+    "name": "Damian Brzeski"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Długi Kierz 11",
+    "postalCode": "83-335",
+    "addressLocality": "Długi Kierz",
+    "addressCountry": "PL"
+  },
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 52.2297,
+      "longitude": 21.0122
+    },
+    "geoRadius": "80000"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "07:00",
+      "closes": "16:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "200"
+  },
+  "image": ogImage,
+  "priceRange": "$$",
+  "serviceType": [
+    "Wykończenia wnętrz",
+    "Malowanie ścian",
+    "Gładzie gipsowe",
+    "Układanie płytek",
+    "Montaż paneli",
+    "Remonty łazienek",
+    "Sufity podwieszane",
+    "Zabudowy karton-gips"
+  ]
+});
+---
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary Meta -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="wykończenia wnętrz Warszawa, remonty mieszkań Warszawa, malowanie ścian, gładzie gipsowe, płytki glazura, panele podłogi, sufity podwieszane, remonty łazienek, DamBud, Damian Brzeski" />
+  <meta name="author" content="DamBud – Damian Brzeski" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="DamBud Wykończenia Wnętrz" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="pl_PL" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#E55A00" />
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json" set:html={schema} />
+</head>
+<body>
+  <slot />
+
+  <!-- Scroll animation observer -->
+  <script>
+    const observerOptions: IntersectionObserverInit = {
+      threshold: 0.12,
+      rootMargin: '0px 0px -60px 0px',
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('[data-animate]').forEach((el) => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+---
+const year = new Date().getFullYear();
+
+const navLinks = [
+  { label: 'O Firmie',   href: '#o-firmie'  },
+  { label: 'Usługi',     href: '#uslugi'     },
+  { label: 'Realizacje', href: '#realizacje' },
+  { label: 'Opinie',     href: '#opinie'     },
+  { label: 'Kontakt',    href: '#kontakt'    },
+];
+
+const services = [
+  'Malowanie ścian i sufitów',
+  'Gładzie gipsowe',
+  'Płytki i glazura',
+  'Panele i podłogi',
+  'Remonty łazienek',
+  'Sufity podwieszane',
+  'Zabudowy karton-gips',
+  'Montaż drzwi',
+];
+---
+
+<footer class="footer" aria-label="Stopka strony">
+  <div class="container footer__inner">
+    <!-- Brand column -->
+    <div class="footer__brand">
+      <a href="/" class="footer__logo" aria-label="DamBud strona główna">
+        <div class="footer__logo-icon">DB</div>
+        <div>
+          <span class="footer__logo-name">DAMBUD</span>
+          <span class="footer__logo-sub">Wykończenia Wnętrz</span>
+        </div>
+      </a>
+      <p class="footer__brand-desc">
+        Profesjonalne wykończenia wnętrz w Warszawie i okolicach.
+        Realizujemy marzenia o idealnym wnętrzu od ponad 10 lat.
+      </p>
+      <address class="footer__address">
+        <a href="tel:+48794722003" class="footer__contact-link">+48 794 722 003</a>
+        <a href="mailto:damianbrzeski1@onet.pl" class="footer__contact-link">damianbrzeski1@onet.pl</a>
+        <span>Długi Kierz 11, 83-335 Długi Kierz</span>
+        <span>Pon – Sob: 7:00 – 16:00</span>
+      </address>
+      <!-- Social -->
+      <div class="footer__social">
+        <a
+          href="https://www.tiktok.com/@wykoczenia.dambud?_t=ZN-90QfeqjMoXm&_r=1"
+          class="footer__social-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="DamBud na TikTok"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+          </svg>
+          TikTok
+        </a>
+      </div>
+    </div>
+
+    <!-- Nav links -->
+    <nav class="footer__nav" aria-label="Nawigacja stopki">
+      <h3 class="footer__col-title">Nawigacja</h3>
+      <ul class="footer__list">
+        {navLinks.map((link) => (
+          <li><a href={link.href} class="footer__link">{link.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Services links -->
+    <div class="footer__services">
+      <h3 class="footer__col-title">Usługi</h3>
+      <ul class="footer__list">
+        {services.map((s) => (
+          <li><a href="#uslugi" class="footer__link">{s}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- CTA column -->
+    <div class="footer__cta-col">
+      <h3 class="footer__col-title">Bezpłatna wycena</h3>
+      <p class="footer__cta-text">
+        Skontaktuj się z nami i uzyskaj darmowy kosztorys w ciągu 24 godzin.
+      </p>
+      <a href="#kontakt" class="btn btn-primary footer__cta-btn">
+        Zapytaj o wycenę
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <div class="footer__hours">
+        <p class="footer__hours-label">Godziny pracy</p>
+        <p>Pon – Pt: 7:00 – 18:00</p>
+        <p>Sobota: 8:00 – 14:00</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p class="footer__copy">
+        &copy; {year} DamBud – Damian Brzeski. Wszelkie prawa zastrzeżone.
+      </p>
+      <p class="footer__copy footer__copy--right">
+        Warszawa · Wykończenia Wnętrz
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--clr-dark-2);
+    color: rgba(255,255,255,0.7);
+    padding-top: clamp(var(--space-12), 6vw, var(--space-20));
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1.2fr 1.3fr;
+    gap: clamp(var(--space-8), 4vw, var(--space-16));
+    padding-bottom: clamp(var(--space-10), 5vw, var(--space-16));
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* Brand */
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .footer__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .footer__logo-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--clr-orange);
+    color: var(--clr-white);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .footer__logo-name {
+    display: block;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-black);
+    color: var(--clr-white);
+    letter-spacing: 0.12em;
+  }
+
+  .footer__logo-sub {
+    display: block;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .footer__brand-desc {
+    font-size: var(--fs-sm);
+    line-height: 1.7;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .footer__address {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-style: normal;
+    font-size: var(--fs-sm);
+  }
+
+  .footer__contact-link {
+    color: rgba(255,255,255,0.7);
+    transition: color var(--transition);
+  }
+
+  .footer__contact-link:hover {
+    color: var(--clr-orange);
+  }
+
+  .footer__social {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-1);
+  }
+
+  .footer__social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semi);
+    color: rgba(255,255,255,0.6);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50px;
+    transition: all var(--transition);
+  }
+
+  .footer__social-link:hover {
+    background: var(--clr-orange);
+    border-color: var(--clr-orange);
+    color: var(--clr-white);
+  }
+
+  /* Columns */
+  .footer__col-title {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clr-white);
+    margin-bottom: var(--space-5);
+  }
+
+  .footer__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .footer__link {
+    font-size: var(--fs-sm);
+    color: rgba(255,255,255,0.55);
+    transition: color var(--transition), padding-left var(--transition);
+    display: block;
+  }
+
+  .footer__link:hover {
+    color: var(--clr-orange);
+    padding-left: var(--space-2);
+  }
+
+  /* CTA column */
+  .footer__cta-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .footer__cta-text {
+    font-size: var(--fs-sm);
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  .footer__cta-btn {
+    align-self: flex-start;
+    font-size: var(--fs-sm);
+    padding: 0.75rem 1.5rem;
+  }
+
+  .footer__hours {
+    margin-top: var(--space-2);
+  }
+
+  .footer__hours-label {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: var(--space-2);
+  }
+
+  .footer__hours p {
+    font-size: var(--fs-sm);
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* Bottom */
+  .footer__bottom {
+    padding: var(--space-5) 0;
+  }
+
+  .footer__bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .footer__copy {
+    font-size: var(--fs-xs);
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .footer__inner {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .footer__bottom-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

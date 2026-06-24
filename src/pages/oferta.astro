@@ -1,0 +1,666 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import Footer from '../components/Footer.astro';
+import FloatingCta from '../components/FloatingCta.astro';
+
+const services = [
+  {
+    id: 'posadzki',
+    number: '01',
+    label: 'Posadzki',
+    title: 'Posadzki wylewkowe i poziomujące',
+    shortTitle: 'Posadzki',
+    icon: `<rect x="2" y="18" width="20" height="3" rx="1"/><path d="M4 18V8"/><path d="M20 18V8"/><path d="M2 8h20"/><path d="M6 12h12"/>`,
+    teaser: 'Precyzyjne wylewki i poziomowanie podłóg — solidna podstawa każdego wykończenia.',
+    intro: 'Profesjonalna posadzka to fundament trwałego i estetycznego wnętrza. Wykonujemy wylewki maszynowe i ręczne, które zapewniają idealnie równe podłoże pod każde wykończenie — płytki, panele, parkiet czy żywicę epoksydową.',
+    details: [
+      'Wylewki cementowe i anhydrytowe (maszynowe i ręczne)',
+      'Posadzki samopoziomujące pod każdy rodzaj wykończenia',
+      'Jastrychy zbrojone siatką lub fibą',
+      'Izolacja przeciwwilgociowa i termiczna pod posadzką',
+      'Wylewki ogrzewania podłogowego (wodnego i elektrycznego)',
+      'Szlifowanie, frezowanie i reprymowanie podłoży',
+      'Uszczelnianie pęknięć i przygotowanie starych posadzek',
+      'Posadzki epoksydowe i żywiczne (garaże, piwnice, warsztaty)',
+    ],
+    bg: 'light',
+    img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80',
+    imgAlt: 'Wylewka posadzkowa w trakcie wykonywania',
+  },
+  {
+    id: 'malowanie',
+    number: '02',
+    label: 'Malowanie',
+    title: 'Malowanie ścian i sufitów',
+    shortTitle: 'Malowanie',
+    icon: `<path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/>`,
+    teaser: 'Perfekcyjne pokrycie każdej powierzchni — od klasycznych farb po efekty dekoracyjne.',
+    intro: 'Malowanie to jeden z najważniejszych elementów wykończenia wnętrza. Dobieramy odpowiednie farby do każdego pomieszczenia i podłoża, dbając o trwałość, estetykę i zdrowy mikroklimat. Pracujemy z farbami emulsyjnymi, lateksowymi, ceramicznymi oraz dekoracyjnymi.',
+    details: [
+      'Malowanie ścian i sufitów farbami emulsyjnymi i lateksowymi',
+      'Farby ceramiczne i silikatowe o podwyższonej odporności',
+      'Tynki i farby dekoracyjne — beton architektoniczny, efekt aksamitu',
+      'Malowanie natryskowe (airless) — szybko i równomiernie',
+      'Gruntowanie i szpachlowanie przed malowaniem',
+      'Malowanie elewacji zewnętrznych farbami silikonowymi',
+      'Lakierowanie i bejcowanie elementów drewnianych',
+      'Malowanie grzejników, rur i innych elementów metalowych',
+    ],
+    bg: 'dark',
+    img: 'https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=800&q=80',
+    imgAlt: 'Profesjonalne malowanie ścian',
+  },
+  {
+    id: 'gladzie',
+    number: '03',
+    label: 'Gładzie',
+    title: 'Gładzie gipsowe',
+    shortTitle: 'Gładzie gipsowe',
+    icon: `<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>`,
+    teaser: 'Idealnie gładkie powierzchnie — doskonała baza pod malowanie lub tapety.',
+    intro: 'Gładzie gipsowe to sztuka uzyskania perfekcyjnie płaskiej i gładkiej powierzchni ściany lub sufitu. Stosujemy materiały najwyższej jakości, a praca jest wykonywana ręcznie z pełną precyzją. Efekt końcowy to ściany gotowe pod malowanie lub tapetowanie.',
+    details: [
+      'Gładź gipsowa jednowarstwowa i dwuwarstwowa',
+      'Gładź akrylowa — do wilgotnych pomieszczeń (łazienka, kuchnia)',
+      'Szlifowanie maszynowe na wysoki połysk',
+      'Wypełnianie rys, pęknięć i nierówności',
+      'Przyklejanie i szpachlowanie siatek wzmacniających (przy tynkach)',
+      'Wykończenie narożników — zewnętrznych i wewnętrznych',
+      'Przygotowanie powierzchni pod tynki dekoracyjne',
+      'Gipsowanie ościeży okiennych i drzwiowych',
+    ],
+    bg: 'light',
+    img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80',
+    imgAlt: 'Wykonywanie gładzi gipsowej',
+  },
+  {
+    id: 'kafelki',
+    number: '04',
+    label: 'Kafelki',
+    title: 'Płytki, glazura i kafelkowanie',
+    shortTitle: 'Płytki i kafelki',
+    icon: `<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>`,
+    teaser: 'Precyzyjne układanie płytek w każdym formacie i wzorze — od klasyki po wielki format.',
+    intro: 'Układanie płytek to jedna z naszych specjalności. Pracujemy z wszystkimi formatami i rodzajami płytek ceramicznych — od małych mozaik po wielkie formaty 120×120 cm. Każde ułożenie poprzedzone jest dokładnym planowaniem i przygotowaniem podłoża.',
+    details: [
+      'Płytki ceramiczne, gresowe, kamienne i klinkierowe',
+      'Wielkie formaty: 60×120, 80×80, 120×120 cm i większe',
+      'Wzory układania: klasyczny, jodełka, cegiełka, rybia łuska, mozaika',
+      'Hydroizolacja podłoża (łazienki, prysznice, tarasy)',
+      'Fugowanie tradycyjne i epoksydowe',
+      'Płytki ścienne w kuchni (backsplash) i łazience',
+      'Podłogi tarasowe i zewnętrzne (mrozoodporne)',
+      'Cięcie laserowe i dopasowanie przy ościeżach i przeszkodach',
+    ],
+    bg: 'dark',
+    img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80',
+    imgAlt: 'Układanie płytek ceramicznych',
+  },
+  {
+    id: 'podlogi',
+    number: '05',
+    label: 'Podłogi',
+    title: 'Panele, podłogi i parkiety',
+    shortTitle: 'Podłogi',
+    icon: `<path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><path d="M3 9l2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/><path d="M12 3v6"/>`,
+    teaser: 'Panele laminowane, winylowe i drewniane — każda podłoga ułożona z pasją do detalu.',
+    intro: 'Podłoga nadaje charakter całemu wnętrzu. Oferujemy układanie wszelkich rodzajów podłóg — od ekonomicznych paneli laminowanych, przez trwały winyls LVT, po szlachetne drewno litego. Każdą realizację rozpoczynamy od odpowiedniego przygotowania podłoża.',
+    details: [
+      'Panele laminowane klasy AC4 i AC5 (klasy mieszkalne i usługowe)',
+      'Podłogi winylowe SPC i LVT — wodoodporne, do łazienki i kuchni',
+      'Deska drewniana i deska trójwarstwowa',
+      'Parkiet drewniany — układanie w jodełkę, wzory geometryczne',
+      'Cyklinowanie i lakierowanie/olejowanie starych parkietów',
+      'Cokoły, listwy przypodłogowe, profile przejściowe',
+      'Ogrzewanie podłogowe elektryczne (mata grzewcza, kabel)',
+      'Podkłady wygłuszające i termoizolacyjne',
+    ],
+    bg: 'light',
+    img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
+    imgAlt: 'Układanie podłogi drewnianej',
+  },
+  {
+    id: 'lazienki',
+    number: '06',
+    label: 'Łazienki',
+    title: 'Remonty łazienek',
+    shortTitle: 'Remonty łazienek',
+    icon: `<path d="M4 22V12a8 8 0 0 1 16 0v10"/><path d="M2 22h20"/><path d="M7 22v-5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v5"/>`,
+    teaser: 'Kompleksowa przebudowa łazienki od projektu do odbioru — hydraulika, płytki, armatura.',
+    intro: 'Remont łazienki to jedno z naszych flagowych specjalizacji. Zajmujemy się kompleksową przebudową — od prac hydraulicznych i elektrycznych, przez kafelkowanie, po montaż armatury i akcesoriów. Efekt to piękna i funkcjonalna łazienka dopasowana do Twoich oczekiwań.',
+    details: [
+      'Przebudowa instalacji hydraulicznej i elektrycznej',
+      'Wyburzenia i murowanie ścianek działowych',
+      'Hydroizolacja i kompleksowe kafelkowanie',
+      'Montaż wanien wolnostojących, narożnych i standardowych',
+      'Kabiny prysznicowe, brodziki i prysznice walk-in',
+      'Montaż umywalek, misek WC, bidetów i armatury',
+      'Zabudowy podumywalkowe i zabudowy WC z kartonu gipsowego',
+      'Oświetlenie, wentylacja i ogrzewanie łazienkowe (grzejnik drabinkowy)',
+    ],
+    bg: 'dark',
+    img: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80',
+    imgAlt: 'Nowoczesna łazienka po remoncie przez DamBud',
+  },
+  {
+    id: 'karton-gips',
+    number: '07',
+    label: 'Karton-gips',
+    title: 'Zabudowy karton-gips',
+    shortTitle: 'Karton-gips',
+    icon: `<path d="M2 20h20"/><path d="M6 20V10"/><path d="M18 20V10"/><path d="M10 20v-6"/><path d="M14 20v-6"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/>`,
+    teaser: 'Ścianki działowe, nisze, obudowy grzejników i szafy na wymiar z kartonu gipsowego.',
+    intro: 'Karton-gips to niezwykle wszechstronny materiał, który pozwala na kształtowanie wnętrza według własnych potrzeb. Budujemy ścianki działowe, tworzymy zabudowy, nisze i sufity podwieszane, które zmieniają charakter i funkcjonalność każdego pomieszczenia.',
+    details: [
+      'Ścianki działowe — pojedyncze i podwójne, z izolacją akustyczną',
+      'Sufity podwieszane z kartonu gipsowego (płaskie i wielopoziomowe)',
+      'Zabudowy grzejników, słupów i instalacji',
+      'Nisze dekoracyjne i półki wbudowane w ściany',
+      'Zabudowy kuchenne i łazienkowe (pod wymiar)',
+      'Szafy i garderoby z zabudowy kartonowo-gipsowej',
+      'Obudowy wanien i hydromasaży',
+      'Ściany z podświetleniem LED (zabudowy z niszą na taśmę LED)',
+    ],
+    bg: 'light',
+    img: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=800&q=80',
+    imgAlt: 'Zabudowa karton-gips w wykonaniu DamBud',
+  },
+  {
+    id: 'sufity',
+    number: '08',
+    label: 'Sufity',
+    title: 'Sufity podwieszane',
+    shortTitle: 'Sufity podwieszane',
+    icon: `<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/>`,
+    teaser: 'Sufity systemowe, gipsowe i napinane z dowolną architekturą oświetlenia LED.',
+    intro: 'Sufit podwieszany to nie tylko estetyczny element wystroju — to też sposób na ukrycie instalacji elektrycznej, poprawę akustyki i stworzenie ciekawej architektury świetlnej. Projektujemy i wykonujemy sufity dopasowane do każdego wnętrza.',
+    details: [
+      'Sufity podwieszane z płyt gipsowo-kartonowych (GK)',
+      'Sufity modułowe systemowe (biura, lokale usługowe)',
+      'Sufity wielopoziomowe z podświetleniem LED',
+      'Sufity napinane — matowe, błyszczące, drukowane',
+      'Ukryta instalacja elektryczna i oświetleniowa',
+      'Oprawy wpuszczane, taśmy LED, reflektor szynowy',
+      'Kaseton kominkowy i nadszybie kuchenne',
+      'Wentylacja i klimatyzacja w suficie podwieszanym',
+    ],
+    bg: 'dark',
+    img: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80',
+    imgAlt: 'Sufit podwieszany z oświetleniem LED',
+  },
+  {
+    id: 'drzwi',
+    number: '09',
+    label: 'Drzwi',
+    title: 'Montaż drzwi',
+    shortTitle: 'Montaż drzwi',
+    icon: `<rect x="2" y="3" width="8" height="18" rx="1"/><path d="M10 7h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/><path d="M22 7l-3-3v14l3-3"/>`,
+    teaser: 'Drzwi wewnętrzne i zewnętrzne — montaż z regulacją ościeżnicy i futryny.',
+    intro: 'Prawidłowy montaż drzwi to gwarancja ich długoletniego, bezproblemowego użytkowania. Zajmujemy się montażem drzwi wewnętrznych i zewnętrznych — od pomiaru, przez dobór ościeżnicy, po finalne ustawienie i uszczelnienie.',
+    details: [
+      'Drzwi wewnętrzne z ościeżnicą regulowaną i obejmową',
+      'Drzwi zewnętrzne, wejściowe i techniczne',
+      'Drzwi przesuwne, chowane w ścianę (system kieszeniowy)',
+      'Drzwi dwuskrzydłowe i harmonijkowe',
+      'Regulacja i ustawianie zawiasów — poziom i pion',
+      'Montaż klamek, zamków i okuć drzwiowych',
+      'Uszczelnianie i wyciszanie drzwi (uszczelki akustyczne)',
+      'Wymiana starych drzwi — demontaż i utylizacja',
+    ],
+    bg: 'light',
+    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    imgAlt: 'Montaż drzwi wewnętrznych',
+  },
+  {
+    id: 'kompleksowe',
+    number: '10',
+    label: 'Kompleksowe',
+    title: 'Kompleksowe wykończenia wnętrz',
+    shortTitle: 'Wykończenia kompleksowe',
+    icon: `<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>`,
+    teaser: 'Od stanu deweloperskiego do "pod klucz" — nadzorujemy cały proces wykończenia.',
+    intro: 'Kompleksowe wykończenie to nasza największa specjalność. Przejmujemy pełną odpowiedzialność za Twój projekt — od pierwszej konsultacji, przez koordynację wszystkich prac, aż po odbiór gotowego wnętrza. Jeden wykonawca, zero stresu.',
+    details: [
+      'Stan deweloperski → gotowe do zamieszkania ("pod klucz")',
+      'Pełna koordynacja wszystkich ekip i branż',
+      'Harmonogram prac i bieżące raporty dla klienta',
+      'Posadzki, tynki, gładzie, malowanie, płytki — wszystko w jednym',
+      'Montaż oświetlenia, gniazdek i łączników',
+      'Montaż armatury łazienkowej i kuchennej',
+      'Montaż drzwi wewnętrznych i zewnętrznych',
+      'Gwarancja jakości i odbiór z listy kontrolną',
+    ],
+    bg: 'dark',
+    img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80',
+    imgAlt: 'Kompleksowe wykończenie mieszkania przez DamBud',
+  },
+];
+---
+
+<Layout
+  title="Oferta – Wykończenia Wnętrz DamBud | Warszawa"
+  description="Pełna oferta DamBud: posadzki, malowanie ścian, gładzie gipsowe, płytki, podłogi, remonty łazienek, zabudowy karton-gips, sufity, drzwi. Kompleksowe wykończenia Warszawa."
+>
+  <Navigation />
+
+  <main>
+
+    <!-- ===== PAGE HERO ===== -->
+    <section class="page-hero">
+      <div class="page-hero__bg">
+        <img
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
+          alt=""
+          class="page-hero__img"
+          loading="eager"
+          fetchpriority="high"
+          aria-hidden="true"
+        />
+        <div class="page-hero__overlay"></div>
+      </div>
+      <div class="container page-hero__content">
+        <p class="page-hero__label" data-animate="fade-up">
+          <span class="page-hero__line"></span>
+          DamBud · Damian Brzeski · Warszawa
+        </p>
+        <h1 class="page-hero__heading" data-animate="fade-up" data-animate-delay="100">
+          Nasza<br/><span>Oferta</span>
+        </h1>
+        <p class="page-hero__sub" data-animate="fade-up" data-animate-delay="200">
+          Kompleksowe wykończenia wnętrz — od posadzek i gładzi,<br class="d-none-mobile"/>
+          przez malowanie i kafelki, aż po drzwi i sufity podwieszane.
+        </p>
+        <div class="page-hero__btns" data-animate="fade-up" data-animate-delay="300">
+          <a href="#oferta-lista" class="btn btn-primary">
+            Zobacz usługi
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+          <a href="/#kontakt" class="btn btn-outline">Darmowa wycena</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===== SERVICES LIST ===== -->
+    <div id="oferta-lista">
+      {services.map((s, i) => (
+        <section
+          id={s.id}
+          class={`srv srv--${s.bg}`}
+          aria-labelledby={`srv-heading-${s.id}`}
+        >
+          <div class={`container srv__grid${i % 2 !== 0 ? ' srv__grid--reverse' : ''}`}>
+
+            <!-- Image -->
+            <div class="srv__img-wrap" data-animate={i % 2 !== 0 ? 'fade-right' : 'fade-left'}>
+              <div class="srv__img-number" aria-hidden="true">{s.number}</div>
+              <img
+                src={s.img}
+                alt={s.imgAlt}
+                class="srv__img"
+                loading="lazy"
+                width="720"
+                height="540"
+              />
+              <div class="srv__img-badge">
+                <div class="icon-box srv__badge-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <Fragment set:html={s.icon} />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="srv__content">
+              <p class={`section-label${s.bg === 'dark' ? ' srv__label--dark' : ''}`} data-animate="fade-up">
+                {s.label}
+              </p>
+              <h2
+                id={`srv-heading-${s.id}`}
+                class={`section-heading${s.bg === 'dark' ? ' section-heading--white' : ''}`}
+                data-animate="fade-up"
+                data-animate-delay="100"
+              >
+                {s.title.split(' ').slice(0, 2).join(' ')}<br/>
+                <span>{s.title.split(' ').slice(2).join(' ')}</span>
+              </h2>
+
+              <p class={`srv__intro${s.bg === 'dark' ? ' srv__intro--dark' : ''}`} data-animate="fade-up" data-animate-delay="200">
+                {s.intro}
+              </p>
+
+              <!-- What we do list -->
+              <div class="srv__list-wrap" data-animate="fade-up" data-animate-delay="300">
+                <p class={`srv__list-label${s.bg === 'dark' ? ' srv__list-label--dark' : ''}`}>
+                  Co wykonujemy:
+                </p>
+                <ul class="srv__list" role="list">
+                  {s.details.map(item => (
+                    <li class="srv__list-item">
+                      <span class="srv__check" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      </span>
+                      <span class={s.bg === 'dark' ? 'srv__item-text--dark' : ''}>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div data-animate="fade-up" data-animate-delay="400">
+                <a href="/#kontakt" class="btn btn-primary">
+                  Zapytaj o wycenę
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- ===== CTA BANNER ===== -->
+    <CtaBanner />
+
+  </main>
+
+  <Footer />
+  <FloatingCta />
+</Layout>
+
+<style>
+  /* ===== PAGE HERO ===== */
+  .page-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .page-hero__bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .page-hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      rgba(0,0,0,0.82) 0%,
+      rgba(0,0,0,0.6) 60%,
+      rgba(0,0,0,0.4) 100%
+    );
+  }
+
+  .page-hero__content {
+    position: relative;
+    z-index: 1;
+    padding-top: calc(var(--nav-height) + var(--space-12));
+    padding-bottom: var(--space-16);
+  }
+
+  .page-hero__label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semi);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--clr-orange);
+    margin-bottom: var(--space-5);
+  }
+
+  .page-hero__line {
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: var(--clr-orange);
+    flex-shrink: 0;
+  }
+
+  .page-hero__heading {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: var(--fw-black);
+    line-height: 1.0;
+    text-transform: uppercase;
+    color: var(--clr-white);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-6);
+  }
+
+  .page-hero__heading span {
+    color: var(--clr-orange);
+  }
+
+  .page-hero__sub {
+    font-size: clamp(var(--fs-base), 2vw, var(--fs-md));
+    color: rgba(255,255,255,0.72);
+    line-height: 1.65;
+    margin-bottom: var(--space-8);
+    max-width: 560px;
+  }
+
+  .page-hero__btns {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+
+  /* ===== SERVICE SECTIONS ===== */
+  .srv {
+    padding: clamp(var(--space-16), 8vw, var(--space-32)) 0;
+  }
+
+  .srv--light {
+    background: var(--clr-white);
+  }
+
+  .srv--dark {
+    background: var(--clr-dark);
+  }
+
+  .srv__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(var(--space-10), 6vw, var(--space-20));
+    align-items: center;
+  }
+
+  .srv__grid--reverse {
+    direction: rtl;
+  }
+
+  .srv__grid--reverse > * {
+    direction: ltr;
+  }
+
+  /* Image */
+  .srv__img-wrap {
+    position: relative;
+  }
+
+  .srv__img {
+    width: 100%;
+    height: clamp(320px, 45vw, 520px);
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    display: block;
+  }
+
+  .srv__img-number {
+    position: absolute;
+    top: calc(-1 * var(--space-5));
+    left: calc(-1 * var(--space-5));
+    font-size: clamp(5rem, 10vw, 8rem);
+    font-weight: var(--fw-black);
+    line-height: 1;
+    color: var(--clr-orange);
+    opacity: 0.18;
+    user-select: none;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .srv__img-badge {
+    position: absolute;
+    bottom: var(--space-5);
+    right: var(--space-5);
+    background: var(--clr-orange);
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-orange);
+  }
+
+  .srv__img-badge .icon-box {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+  }
+
+  .srv__img-badge svg {
+    stroke: white;
+    color: white;
+  }
+
+  /* Content */
+  .srv__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .srv__label--dark {
+    color: var(--clr-orange);
+  }
+
+  .srv__label--dark::before {
+    background: var(--clr-orange);
+  }
+
+  .srv__intro {
+    font-size: var(--fs-md);
+    color: var(--clr-text-muted);
+    line-height: 1.75;
+  }
+
+  .srv__intro--dark {
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* List */
+  .srv__list-wrap {
+    background: var(--clr-beige);
+    border-radius: var(--radius-md);
+    padding: var(--space-6) var(--space-7);
+  }
+
+  .srv--dark .srv__list-wrap {
+    background: rgba(255,255,255,0.05);
+  }
+
+  .srv__list-label {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clr-orange);
+    margin-bottom: var(--space-4);
+  }
+
+  .srv__list-label--dark {
+    color: var(--clr-orange);
+  }
+
+  .srv__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3) var(--space-6);
+  }
+
+  .srv__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    font-size: var(--fs-sm);
+    color: var(--clr-text-muted);
+    line-height: 1.5;
+  }
+
+  .srv--dark .srv__list-item {
+    color: rgba(255,255,255,0.6);
+  }
+
+  .srv__check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: var(--clr-orange);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .srv__check svg {
+    stroke: white;
+  }
+
+  .srv__item-text--dark {
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* Helpers */
+  .d-none-mobile {
+    display: inline;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .srv__grid,
+    .srv__grid--reverse {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+
+    .srv__img-number {
+      font-size: 5rem;
+      top: calc(-1 * var(--space-3));
+      left: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .srv__list {
+      grid-template-columns: 1fr;
+    }
+
+    .d-none-mobile {
+      display: none;
+    }
+
+    .page-hero__pills-inner {
+      gap: var(--space-2);
+    }
+  }
+</style>

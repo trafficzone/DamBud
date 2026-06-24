@@ -1,0 +1,366 @@
+---
+---
+
+<section class="hero" id="hero" aria-label="Sekcja główna">
+  <!-- Background image layer -->
+  <div class="hero__bg">
+    <img
+      src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
+      alt="Eleganckie wykończone wnętrze przez DamBud"
+      class="hero__bg-img"
+      loading="eager"
+      fetchpriority="high"
+      width="1920"
+      height="1080"
+    />
+    <div class="hero__overlay"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="container hero__content">
+    <div class="hero__text">
+      <!-- Label -->
+      <p class="hero__label" data-animate="fade-up">
+        <span class="hero__label-line"></span>
+        Damian Brzeski · DamBud · Warszawa
+      </p>
+
+      <!-- Heading -->
+      <h1 class="hero__heading" data-animate="fade-up" data-animate-delay="150">
+        Profesjonalne<br/>
+        <span>Wykończenia</span><br/>
+        <span class="hero__heading-nowrap">Wnętrz od A do Z</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero__subtitle" data-animate="fade-up" data-animate-delay="300">
+        Tworzymy funkcjonalne i estetyczne przestrzenie dla mieszkań,<br class="hero__br"/>
+        domów oraz lokali usługowych.
+      </p>
+
+      <!-- Buttons -->
+      <div class="hero__buttons" data-animate="fade-up" data-animate-delay="450">
+        <a href="#kontakt" class="btn btn-primary">
+          Darmowa wycena
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#realizacje" class="btn btn-outline">Zobacz realizacje</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="hero__stats" data-animate="fade-up" data-animate-delay="600">
+    <div class="container">
+      <div class="hero__stats-inner">
+        <div class="hero__stat">
+          <span class="hero__stat-number" data-count="200">0</span>
+          <span class="hero__stat-plus">+</span>
+          <p class="hero__stat-label">Zrealizowanych projektów</p>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-number" data-count="10">0</span>
+          <span class="hero__stat-plus">+</span>
+          <p class="hero__stat-label">Lat na rynku</p>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-number" data-count="100">0</span>
+          <span class="hero__stat-plus">%</span>
+          <p class="hero__stat-label">Zadowolonych klientów</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll" aria-hidden="true">
+    <span class="hero__scroll-text">Scroll</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Background */
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero__bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    transform: scale(1.04);
+    animation: heroZoom 12s ease-out forwards;
+  }
+
+  @keyframes heroZoom {
+    to { transform: scale(1); }
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      rgba(0,0,0,0.75) 0%,
+      rgba(0,0,0,0.55) 50%,
+      rgba(0,0,0,0.35) 100%
+    );
+  }
+
+  /* Content */
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    padding-top: var(--nav-height);
+    padding-bottom: 180px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero__text {
+    max-width: 720px;
+  }
+
+  /* Label */
+  .hero__label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semi);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--clr-orange);
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__label-line {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--clr-orange);
+    flex-shrink: 0;
+  }
+
+  /* Heading */
+  .hero__heading {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: var(--fw-black);
+    line-height: 1.0;
+    text-transform: uppercase;
+    color: var(--clr-white);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__heading span {
+    color: var(--clr-orange);
+    display: inline-block;
+  }
+
+  .hero__heading-nowrap {
+    color: var(--clr-white);
+    white-space: nowrap;
+  }
+
+  /* Subtitle */
+  .hero__subtitle {
+    font-size: clamp(var(--fs-base), 2vw, var(--fs-md));
+    color: rgba(255,255,255,0.75);
+    line-height: 1.65;
+    margin-bottom: var(--space-10);
+    max-width: 540px;
+  }
+
+  /* Buttons */
+  .hero__buttons {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  /* Stats */
+  .hero__stats {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .hero__stats-inner {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: var(--space-6) 0;
+  }
+
+  .hero__stat {
+    flex: 1;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    padding: 0 var(--space-8);
+  }
+
+  .hero__stat:first-child {
+    padding-left: 0;
+  }
+
+  .hero__stat-number {
+    font-size: clamp(var(--fs-2xl), 4vw, var(--fs-4xl));
+    font-weight: var(--fw-black);
+    color: var(--clr-orange);
+    line-height: 1;
+  }
+
+  .hero__stat-plus {
+    font-size: clamp(var(--fs-xl), 3vw, var(--fs-3xl));
+    font-weight: var(--fw-black);
+    color: var(--clr-orange);
+    line-height: 1;
+  }
+
+  .hero__stat-label {
+    flex-basis: 100%;
+    font-size: var(--fs-xs);
+    color: rgba(255,255,255,0.6);
+    margin-top: var(--space-1);
+    letter-spacing: 0.03em;
+  }
+
+  .hero__stat-divider {
+    width: 1px;
+    height: 56px;
+    background: rgba(255,255,255,0.15);
+    flex-shrink: 0;
+  }
+
+  /* Scroll indicator */
+  .hero__scroll {
+    position: absolute;
+    bottom: 120px;
+    right: var(--container-padding);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    z-index: 2;
+    animation: scrollBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  .hero__scroll-text {
+    font-size: 0.6rem;
+    font-weight: var(--fw-semi);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    writing-mode: vertical-lr;
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero__content {
+      padding-bottom: 160px;
+    }
+
+    .hero__stats-inner {
+      padding: var(--space-4) 0;
+      gap: var(--space-2);
+    }
+
+    .hero__stat {
+      padding: 0 var(--space-4);
+    }
+
+    .hero__scroll {
+      display: none;
+    }
+
+    .hero__br {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero__stats-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-4);
+    }
+
+    .hero__stat-divider {
+      display: none;
+    }
+
+    .hero__stat {
+      padding: 0;
+    }
+  }
+</style>
+
+<script>
+  // Counter animation
+  const animateCounter = (el: HTMLElement) => {
+    const target = parseInt(el.dataset.count || '0', 10);
+    const duration = 1800;
+    const start = performance.now();
+
+    const update = (now: number) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target).toString();
+      if (progress < 1) requestAnimationFrame(update);
+    };
+
+    requestAnimationFrame(update);
+  };
+
+  const statsSection = document.querySelector('.hero__stats');
+  if (statsSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll<HTMLElement>('[data-count]').forEach(animateCounter);
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(statsSection);
+  }
+</script>
