@@ -64,7 +64,7 @@ const services = [
           <span>Wykończeń Wnętrz</span>
         </h2>
       </div>
-      <p class="services__header-text" data-animate="fade-up" data-animate-delay="200">
+      <p class="services__header-text" data-animate="fade-right" data-animate-delay="200">
         Kompleksowa obsługa — od pierwszej<br/>
         konsultacji aż po odbiór gotowego wnętrza.
       </p>
@@ -73,48 +73,28 @@ const services = [
     <!-- Grid -->
     <div class="services__grid" role="list">
       {services.map((service, i) => (
-        <a
-          href="/oferta"
+        <article
           class="services__card"
-          data-num={String(i + 1).padStart(2, '0')}
           role="listitem"
           data-animate="fade-up"
-          data-animate-delay={String(Math.min(i * 60, 500))}
+          data-animate-delay={String(Math.min(i * 60, 600))}
         >
-          <!-- Row 1: ordinal number + arrow -->
-          <div class="services__row-top">
-            <span class="services__ordinal" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-            <span class="services__arrow" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-            </span>
-          </div>
-
-          <!-- Icon -->
-          <div class="services__icon-wrap" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <div class="icon-box services__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <Fragment set:html={service.icon} />
             </svg>
           </div>
-
-          <!-- Text -->
-          <h3 class="services__name">{service.name}</h3>
-          <p class="services__desc">{service.desc}</p>
-
-          <!-- Bottom accent line -->
-          <span class="services__accent" aria-hidden="true"></span>
-        </a>
+          <h3 class="services__card-name">{service.name}</h3>
+          <p class="services__card-desc">{service.desc}</p>
+        </article>
       ))}
     </div>
 
     <!-- CTA -->
     <div class="services__cta" data-animate="fade-up">
-      <a href="/oferta" class="btn btn-outline-dark">
-        Zobacz wszystkie usługi
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </a>
-      <a href="#kontakt" class="btn btn-primary">
+      <a href="#kontakt" class="btn btn-outline-dark">
         Zapytaj o wycenę
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
       </a>
     </div>
   </div>
@@ -153,176 +133,91 @@ const services = [
   .services__grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: var(--space-4);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
   }
 
   /* Card */
   .services__card {
-    position: relative;
-    padding: var(--space-7) var(--space-6) var(--space-8);
+    padding: var(--space-8) var(--space-6);
     background: var(--clr-white);
-    border-radius: var(--radius-md);
-    border: 1px solid rgba(0, 0, 0, 0.07);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    border-right: 1px solid var(--clr-border);
+    border-bottom: 1px solid var(--clr-border);
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
-    overflow: hidden;
-    color: inherit;
-    text-decoration: none;
-    transition:
-      transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-      box-shadow 0.3s ease,
-      border-color 0.3s ease;
+    transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+    cursor: default;
   }
 
-  /* Large watermark number via pseudo-element */
-  .services__card::before {
-    content: attr(data-num);
-    position: absolute;
-    bottom: -0.15em;
-    right: 0.2em;
-    font-size: 5.5rem;
-    font-weight: 900;
-    line-height: 1;
-    color: var(--clr-text);
-    opacity: 0.045;
-    pointer-events: none;
-    letter-spacing: -0.04em;
-    font-family: var(--ff-heading);
-    transition: opacity 0.3s ease, color 0.3s ease;
-    user-select: none;
+  .services__card:nth-child(5n) {
+    border-right: none;
+  }
+
+  .services__card:nth-last-child(-n+5) {
+    border-bottom: none;
   }
 
   .services__card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.11);
-    border-color: rgba(229, 90, 0, 0.3);
+    background: var(--clr-white);
+    box-shadow: inset 0 0 0 2px var(--clr-orange);
+    z-index: 1;
   }
 
-  .services__card:hover::before {
-    opacity: 0.09;
-    color: var(--clr-orange);
-  }
-
-  /* Top row: ordinal + arrow */
-  .services__row-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 24px;
-  }
-
-  .services__ordinal {
-    font-size: 0.7rem;
-    font-weight: var(--fw-bold);
-    letter-spacing: 0.1em;
-    color: var(--clr-orange);
-    opacity: 0.7;
-    line-height: 1;
-  }
-
-  .services__card:hover .services__ordinal {
-    opacity: 1;
-  }
-
-  /* Arrow — hidden, slides in on hover */
-  .services__arrow {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: transparent;
-    border: 1.5px solid rgba(229, 90, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--clr-orange);
-    opacity: 0;
-    transform: translateX(-8px) scale(0.85);
-    transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
-    flex-shrink: 0;
-  }
-
-  .services__card:hover .services__arrow {
-    opacity: 1;
-    transform: translateX(0) scale(1);
+  .services__card:hover .services__icon {
     background: var(--clr-orange);
-    border-color: var(--clr-orange);
+  }
+
+  .services__card:hover .services__icon svg {
+    stroke: var(--clr-white);
     color: var(--clr-white);
   }
 
-  /* Icon */
-  .services__icon-wrap {
-    width: 48px;
-    height: 48px;
-    background: rgba(229, 90, 0, 0.08);
-    border: 1px solid rgba(229, 90, 0, 0.15);
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--clr-orange);
-    flex-shrink: 0;
-    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  .services__icon {
+    transition: background var(--transition);
   }
 
-  .services__card:hover .services__icon-wrap {
-    background: var(--clr-orange);
-    border-color: var(--clr-orange);
-    color: var(--clr-white);
-    transform: scale(1.07);
-  }
-
-  /* Text */
-  .services__name {
+  .services__card-name {
     font-size: var(--fs-base);
     font-weight: var(--fw-bold);
     color: var(--clr-text);
     line-height: 1.3;
-    transition: color 0.3s ease;
-    margin-top: var(--space-1);
   }
 
-  .services__card:hover .services__name {
-    color: var(--clr-orange);
-  }
-
-  .services__desc {
+  .services__card-desc {
     font-size: var(--fs-sm);
     color: var(--clr-text-muted);
-    line-height: 1.65;
-    flex: 1;
-  }
-
-  /* Bottom accent */
-  .services__accent {
-    display: block;
-    height: 3px;
-    border-radius: 2px;
-    background: var(--clr-orange);
-    width: 0;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    margin-top: var(--space-2);
-  }
-
-  .services__card:hover .services__accent {
-    width: 40%;
+    line-height: 1.6;
   }
 
   /* CTA */
   .services__cta {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: var(--space-4);
     margin-top: clamp(var(--space-8), 4vw, var(--space-12));
-    flex-wrap: wrap;
   }
 
   /* Responsive */
   @media (max-width: 1100px) {
     .services__grid {
       grid-template-columns: repeat(3, 1fr);
+    }
+
+    .services__card:nth-child(5n) {
+      border-right: 1px solid var(--clr-border);
+    }
+
+    .services__card:nth-child(3n) {
+      border-right: none;
+    }
+
+    .services__card:nth-last-child(-n+5) {
+      border-bottom: 1px solid var(--clr-border);
+    }
+
+    .services__card:nth-last-child(-n+3):not(:nth-child(3n+1):not(:nth-last-child(-n+3))) {
+      border-bottom: none;
     }
   }
 
@@ -338,13 +233,28 @@ const services = [
 
     .services__grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-3);
+    }
+
+    .services__card:nth-child(3n) {
+      border-right: 1px solid var(--clr-border);
+    }
+
+    .services__card:nth-child(2n) {
+      border-right: none;
     }
   }
 
   @media (max-width: 480px) {
     .services__grid {
       grid-template-columns: 1fr;
+    }
+
+    .services__card {
+      border-right: none;
+    }
+
+    .services__card:nth-last-child(1) {
+      border-bottom: none;
     }
   }
 </style>
