@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://dambud.pl',
+  site: 'https://dambud.inmyflat.com',
   integrations: [
     sitemap({
       changefreq: 'monthly',
