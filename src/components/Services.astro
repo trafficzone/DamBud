@@ -129,10 +129,10 @@ const services = [
     padding-bottom: var(--space-2);
   }
 
-  /* Grid — 4 kolumny (2 rzędy × 5 kart, ostatni rząd ma 2 karty) */
+  /* Grid — 5 kolumn (2 rzędy × 5 kart) */
   .services__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     border: 1px solid var(--clr-border);
     border-radius: var(--radius-md);
     overflow: hidden;
@@ -151,11 +151,11 @@ const services = [
     cursor: default;
   }
 
-  .services__card:nth-child(4n) {
+  .services__card:nth-child(5n) {
     border-right: none;
   }
 
-  .services__card:nth-last-child(-n+2) {
+  .services__card:nth-last-child(-n+5) {
     border-bottom: none;
   }
 
@@ -199,12 +199,12 @@ const services = [
   }
 
   /* Responsive */
-  @media (max-width: 1024px) {
+  @media (max-width: 1100px) {
     .services__grid {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    .services__card:nth-child(4n) {
+    .services__card:nth-child(5n) {
       border-right: 1px solid var(--clr-border);
     }
 
@@ -212,7 +212,7 @@ const services = [
       border-right: none;
     }
 
-    .services__card:nth-last-child(-n+2) {
+    .services__card:nth-last-child(-n+5) {
       border-bottom: 1px solid var(--clr-border);
     }
 
@@ -241,10 +241,6 @@ const services = [
 
     .services__card:nth-child(2n) {
       border-right: none;
-    }
-
-    .services__card:nth-last-child(-n+1) {
-      border-bottom: none;
     }
 
     .services__card {
