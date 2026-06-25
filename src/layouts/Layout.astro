@@ -9,8 +9,8 @@ interface Props {
 }
 
 const {
-  title = 'DamBud – Profesjonalne Wykończenia Wnętrz Warszawa | Damian Brzeski',
-  description = 'Kompleksowe wykończenia wnętrz w Warszawie i okolicach. Malowanie, gładzie gipsowe, płytki, podłogi, łazienki. Ponad 200 zrealizowanych projektów. Darmowa wycena.',
+  title = 'DamBud – Wykończenia Wnętrz Gdańsk, Trójmiasto | Remonty Damian Brzeski',
+  description = 'Profesjonalne wykończenia wnętrz i remonty w Gdańsku, Gdyni, Sopocie i okolicach. Malowanie, gładzie gipsowe, płytki, podłogi, łazienki. Ponad 200 projektów. Darmowa wycena.',
   ogImage = '/images/og-image.jpg',
   canonical = Astro.url.href,
 } = Astro.props;
@@ -34,14 +34,19 @@ const schema = JSON.stringify({
     "addressLocality": "Długi Kierz",
     "addressCountry": "PL"
   },
-  "areaServed": {
-    "@type": "GeoCircle",
-    "geoMidpoint": {
-      "@type": "GeoCoordinates",
-      "latitude": 52.2297,
-      "longitude": 21.0122
-    },
-    "geoRadius": "80000"
+  "areaServed": [
+    { "@type": "City", "name": "Gdańsk" },
+    { "@type": "City", "name": "Gdynia" },
+    { "@type": "City", "name": "Sopot" },
+    { "@type": "City", "name": "Kościerzyna" },
+    { "@type": "City", "name": "Tczew" },
+    { "@type": "City", "name": "Starogard Gdański" },
+    { "@type": "City", "name": "Pruszcz Gdański" }
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 54.1194,
+    "longitude": 17.9788
   },
   "openingHoursSpecification": [
     {
@@ -81,7 +86,7 @@ const schema = JSON.stringify({
   <!-- Primary Meta -->
   <title>{title}</title>
   <meta name="description" content={description} />
-  <meta name="keywords" content="wykończenia wnętrz Warszawa, remonty mieszkań Warszawa, malowanie ścian, gładzie gipsowe, płytki glazura, panele podłogi, sufity podwieszane, remonty łazienek, DamBud, Damian Brzeski" />
+  <meta name="keywords" content="remonty Gdańsk, wykończenia wnętrz Gdańsk, remonty Trójmiasto, wykończenia wnętrz Gdynia, remonty Sopot, remonty Kościerzyna, malowanie ścian Gdańsk, gładzie gipsowe Gdańsk, płytki glazura, remonty łazienek Gdańsk, DamBud, Damian Brzeski" />
   <meta name="author" content="DamBud – Damian Brzeski" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href={canonical} />
