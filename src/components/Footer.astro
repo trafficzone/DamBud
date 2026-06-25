@@ -2,11 +2,12 @@
 const year = new Date().getFullYear();
 
 const navLinks = [
-  { label: 'O Firmie',   href: '#o-firmie'  },
-  { label: 'Usługi',     href: '#uslugi'     },
-  { label: 'Realizacje', href: '#realizacje' },
-  { label: 'Opinie',     href: '#opinie'     },
-  { label: 'Kontakt',    href: '#kontakt'    },
+  { label: 'O Firmie',        href: '#o-firmie'           },
+  { label: 'Usługi',          href: '#uslugi'              },
+  { label: 'Realizacje',      href: '#realizacje'          },
+  { label: 'Opinie',          href: '#opinie'              },
+  { label: 'Kontakt',         href: '#kontakt'             },
+  { label: 'Obszar działania', href: '/remonty-trojmiasto' },
 ];
 
 const services = [
@@ -89,29 +90,6 @@ const services = [
         <p class="footer__hours-label">Godziny pracy</p>
         <p>Pon – Pt: 7:00 – 18:00</p>
         <p>Sobota: 8:00 – 14:00</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- SEO text block -->
-  <div class="footer__seo">
-    <div class="container">
-      <div class="footer__seo-inner">
-        <div class="footer__seo-col">
-          <h3 class="footer__seo-heading">Remonty Gdańsk – DamBud Wykończenia Wnętrz</h3>
-          <p>DamBud to firma remontowa działająca na terenie Gdańska, Gdyni, Sopotu i całego Trójmiasta. Specjalizujemy się w kompleksowych wykończeniach wnętrz – od stanu deweloperskiego do efektu końcowego. Wykonujemy remonty mieszkań, domów jednorodzinnych oraz lokali usługowych. Każde zlecenie realizujemy terminowo, zgodnie z ustaleniami i w najwyższym standardzie jakości.</p>
-          <p>Szukasz sprawdzonej ekipy remontowej w Gdańsku? DamBud oferuje pełny zakres usług wykończeniowych: malowanie ścian i sufitów, gładzie gipsowe, układanie płytek i glazury, montaż paneli podłogowych, remonty łazienek, sufity podwieszane oraz zabudowy z karton-gipsu. Działamy też w Tczewie, Starogardzie Gdańskim, Pruszczu Gdańskim i Kościerzynie.</p>
-        </div>
-        <div class="footer__seo-col">
-          <h3 class="footer__seo-heading">Wykończenia wnętrz Gdynia, Sopot, Trójmiasto</h3>
-          <p>Kompleksowe wykończenia wnętrz w Gdyni i Sopocie to nasza specjalność. Obsługujemy zarówno nowe mieszkania deweloperskie, jak i remonty generalne starszych budynków. Oferujemy darmową wycenę na miejscu – przyjedziemy, ocenimy zakres prac i przedstawimy szczegółowy kosztorys bez zobowiązań.</p>
-          <p>Remont łazienki w Trójmieście, wylewka samopoziomująca w Gdańsku, gładzie gipsowe w Gdyni, malowanie mieszkania w Sopocie – DamBud realizuje zlecenia każdej wielkości. Ekipa doświadczona, punktualna i dbająca o porządek na placu budowy. Ponad 200 zrealizowanych projektów i ponad 17 opinii 5/5 w Google potwierdzają najwyższą jakość naszych usług.</p>
-        </div>
-        <div class="footer__seo-col">
-          <h3 class="footer__seo-heading">Remont mieszkania pod klucz – Gdańsk i okolice</h3>
-          <p>Szukasz wykonawcy do remontu mieszkania pod klucz w Gdańsku lub okolicach? DamBud oferuje kompleksową obsługę – od projektu i zakupu materiałów po odbiór gotowego wnętrza. Malowanie, gładzie, płytki, panele, łazienka, kuchnia – wszystko w jednym miejscu, bez stresu i z gwarancją jakości.</p>
-          <p>Pracujemy na terenie: Gdańsk, Gdynia, Sopot, Rumia, Reda, Wejherowo, Tczew, Malbork, Starogard Gdański, Pruszcz Gdański, Kościerzyna i okolice. Zadzwoń lub napisz – odpowiemy w ciągu kilku godzin i umówimy bezpłatną wizję lokalną.</p>
-        </div>
       </div>
     </div>
   </div>
@@ -278,51 +256,6 @@ const services = [
   .footer__hours p {
     font-size: var(--fs-sm);
     color: rgba(255,255,255,0.6);
-  }
-
-  /* SEO block */
-  .footer__seo {
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: clamp(var(--space-8), 4vw, var(--space-12)) 0;
-  }
-
-  .footer__seo-inner {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: clamp(var(--space-6), 3vw, var(--space-10));
-  }
-
-  .footer__seo-col {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  .footer__seo-heading {
-    font-size: var(--fs-xs);
-    font-weight: var(--fw-bold);
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: var(--space-1);
-  }
-
-  .footer__seo-col p {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.2);
-    line-height: 1.7;
-  }
-
-  @media (max-width: 900px) {
-    .footer__seo-inner {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .footer__seo-inner {
-      grid-template-columns: 1fr;
-    }
   }
 
   /* Bottom */
