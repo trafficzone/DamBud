@@ -17,11 +17,7 @@ const navLinks = [
   <div class="container nav__inner">
     <!-- Logo -->
     <a href="/" class="nav__logo" aria-label="DamBud strona główna">
-      <div class="nav__logo-icon">DB</div>
-      <div class="nav__logo-text">
-        <span class="nav__logo-name">DAMBUD</span>
-        <span class="nav__logo-sub">Wykończenia Wnętrz</span>
-      </div>
+      <img src="/images/dambud-logo.png" alt="DamBud Wykończenia Wnętrz" class="nav__logo-img" width="140" height="52" />
     </a>
 
     <!-- Desktop nav links -->
@@ -97,43 +93,21 @@ const navLinks = [
   .nav__logo {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
     flex-shrink: 0;
+    background: rgba(255,255,255,0.97);
+    border-radius: var(--radius-md);
+    padding: 4px 10px;
+    transition: opacity var(--transition);
   }
 
-  .nav__logo-icon {
-    width: 44px;
+  .nav__logo:hover {
+    opacity: 0.9;
+  }
+
+  .nav__logo-img {
     height: 44px;
-    background: var(--clr-orange);
-    color: var(--clr-white);
-    font-size: var(--fs-sm);
-    font-weight: var(--fw-black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-sm);
-    letter-spacing: 0.05em;
-  }
-
-  .nav__logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
-  }
-
-  .nav__logo-name {
-    font-size: var(--fs-sm);
-    font-weight: var(--fw-black);
-    color: var(--clr-white);
-    letter-spacing: 0.12em;
-  }
-
-  .nav__logo-sub {
-    font-size: 0.72rem;
-    font-weight: var(--fw-medium);
-    color: rgba(255,255,255,0.6);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    width: auto;
+    display: block;
   }
 
   /* Nav links */
