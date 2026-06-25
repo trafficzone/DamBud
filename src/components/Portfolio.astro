@@ -2,15 +2,90 @@
 const categories = ['Wszystkie', 'Łazienki', 'Salony', 'Kuchnie', 'Mieszkania', 'Domy'];
 
 const projects = [
-  { cat: 'Łazienki',   img: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80', alt: 'Nowoczesna łazienka z wanną wolnostojącą',   tall: true  },
-  { cat: 'Salony',     img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80', alt: 'Elegancki salon z akcentami drewna',          tall: false },
-  { cat: 'Kuchnie',    img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80', alt: 'Nowoczesna kuchnia z wyspą',                    tall: false },
-  { cat: 'Salony',     img: 'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=600&q=80', alt: 'Salon z podwieszanym sufitem LED',             tall: false },
-  { cat: 'Mieszkania', img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80', alt: 'Wykończone mieszkanie w Warszawie',            tall: false },
-  { cat: 'Łazienki',  img: 'https://images.unsplash.com/photo-1620626011761-996317702519?w=600&q=80', alt: 'Łazienka z prysznicem walk-in',                tall: true  },
-  { cat: 'Domy',       img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80', alt: 'Wykończenie domu jednorodzinnego',               tall: false },
-  { cat: 'Kuchnie',    img: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=600&q=80', alt: 'Kuchnia otwarta na salon',                       tall: false },
-  { cat: 'Mieszkania', img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80', alt: 'Sypialnia z zabudową karton-gips',             tall: false },
+  {
+    cat: 'Łazienki',
+    img: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80',
+    alt: 'Nowoczesna łazienka z wanną wolnostojącą',
+    title: 'Łazienka z wanną',
+    desc: 'Kompleksowy remont z płytkami wielkoformatowymi',
+  },
+  {
+    cat: 'Salony',
+    img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80',
+    alt: 'Elegancki salon z akcentami drewna',
+    title: 'Salon z drewnem',
+    desc: 'Gładzie, malowanie i podłoga z drewna litego',
+  },
+  {
+    cat: 'Kuchnie',
+    img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80',
+    alt: 'Nowoczesna kuchnia z wyspą',
+    title: 'Kuchnia z wyspą',
+    desc: 'Zabudowa, płytki i instalacja elektryczna',
+  },
+  {
+    cat: 'Salony',
+    img: 'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=800&q=80',
+    alt: 'Salon z podwieszanym sufitem LED',
+    title: 'Sufit podwieszany LED',
+    desc: 'Karton-gips z oświetleniem taśmowym LED',
+  },
+  {
+    cat: 'Mieszkania',
+    img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80',
+    alt: 'Wykończone mieszkanie pod klucz',
+    title: 'Mieszkanie pod klucz',
+    desc: 'Pełne wykończenie 65 m² od podstaw',
+  },
+  {
+    cat: 'Łazienki',
+    img: 'https://images.unsplash.com/photo-1620626011761-996317702519?w=800&q=80',
+    alt: 'Łazienka z prysznicem walk-in',
+    title: 'Prysznic walk-in',
+    desc: 'Kabina bez brodzika z odpływem liniowym',
+  },
+  {
+    cat: 'Domy',
+    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    alt: 'Wykończenie domu jednorodzinnego',
+    title: 'Dom jednorodzinny',
+    desc: 'Kompleksowe wykończenie 130 m²',
+  },
+  {
+    cat: 'Kuchnie',
+    img: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80',
+    alt: 'Kuchnia otwarta na salon',
+    title: 'Kuchnia otwarta',
+    desc: 'Płytki jodełka i białe fronty szafek',
+  },
+  {
+    cat: 'Mieszkania',
+    img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',
+    alt: 'Sypialnia z zabudową na wymiar',
+    title: 'Sypialnia z zabudową',
+    desc: 'Szafa w zabudowie karton-gips na wymiar',
+  },
+  {
+    cat: 'Łazienki',
+    img: 'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=800&q=80',
+    alt: 'Mała łazienka z prysznicem',
+    title: 'Łazienka kompaktowa',
+    desc: 'Optymalne wykorzystanie małej przestrzeni',
+  },
+  {
+    cat: 'Domy',
+    img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80',
+    alt: 'Salon w domu z kominkiem',
+    title: 'Salon z kominkiem',
+    desc: 'Tynki dekoracyjne i zabudowa kominka',
+  },
+  {
+    cat: 'Salony',
+    img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80',
+    alt: 'Nowoczesny salon minimalistyczny',
+    title: 'Styl minimalistyczny',
+    desc: 'Gładzie perfekcyjne i malowanie dwutonowe',
+  },
 ];
 ---
 
@@ -46,21 +121,23 @@ const projects = [
     <div class="portfolio__grid" id="portfolio-grid" role="tabpanel">
       {projects.map((project, i) => (
         <div
-          class={`portfolio__item${project.tall ? ' portfolio__item--tall' : ''}`}
+          class="portfolio__item"
           data-category={project.cat}
           data-animate="fade-scale"
-          data-animate-delay={String(Math.min(i * 60, 500))}
+          data-animate-delay={String(Math.min(i * 50, 400))}
         >
           <img
             src={project.img}
             alt={project.alt}
             loading="lazy"
-            width="600"
-            height={project.tall ? '800' : '400'}
+            width="800"
+            height="600"
             class="portfolio__img"
           />
           <div class="portfolio__overlay" aria-hidden="true">
             <span class="portfolio__cat">{project.cat}</span>
+            <p class="portfolio__title">{project.title}</p>
+            <p class="portfolio__desc">{project.desc}</p>
           </div>
           <span class="portfolio__badge">{project.cat}</span>
         </div>
@@ -70,7 +147,7 @@ const projects = [
     <!-- Load more -->
     <div class="portfolio__more" data-animate="fade-up">
       <a href="#kontakt" class="btn btn-outline-dark">
-        Zobacz wszystkie realizacje
+        Zapytaj o realizację
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
       </a>
     </div>
@@ -119,10 +196,10 @@ const projects = [
     color: var(--clr-white);
   }
 
-  /* Grid */
+  /* Grid — jednolita siatka 4 kolumny */
   .portfolio__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 280px;
     gap: var(--space-3);
   }
@@ -133,10 +210,7 @@ const projects = [
     overflow: hidden;
     border-radius: var(--radius-sm);
     cursor: pointer;
-  }
-
-  .portfolio__item--tall {
-    grid-row: span 2;
+    background: var(--clr-beige);
   }
 
   .portfolio__img {
@@ -144,6 +218,7 @@ const projects = [
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
   }
 
   .portfolio__item:hover .portfolio__img {
@@ -154,12 +229,14 @@ const projects = [
   .portfolio__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+    background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
     opacity: 0;
     transition: opacity var(--transition);
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
     padding: var(--space-5);
+    gap: var(--space-1);
   }
 
   .portfolio__item:hover .portfolio__overlay {
@@ -167,10 +244,24 @@ const projects = [
   }
 
   .portfolio__cat {
+    color: var(--clr-orange);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .portfolio__title {
     color: var(--clr-white);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    line-height: 1.25;
+  }
+
+  .portfolio__desc {
+    color: rgba(255,255,255,0.75);
     font-size: var(--fs-sm);
-    font-weight: var(--fw-semi);
-    letter-spacing: 0.05em;
+    line-height: 1.4;
   }
 
   /* Badge */
@@ -201,26 +292,38 @@ const projects = [
   }
 
   /* Responsive */
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
     .portfolio__grid {
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: 240px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 260px;
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     .portfolio__header {
       flex-direction: column;
       align-items: flex-start;
     }
 
     .portfolio__grid {
-      grid-template-columns: 1fr;
-      grid-auto-rows: 260px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 240px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .portfolio__grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 180px;
     }
 
-    .portfolio__item--tall {
-      grid-row: span 1;
+    .portfolio__filters {
+      gap: var(--space-1);
+    }
+
+    .portfolio__filter {
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--fs-xs);
     }
   }
 </style>
@@ -233,7 +336,6 @@ const projects = [
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter!;
 
-      // Update active button
       filterBtns.forEach((b) => {
         b.classList.remove('active');
         b.setAttribute('aria-selected', 'false');
@@ -241,7 +343,6 @@ const projects = [
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
 
-      // Filter items with animation
       items.forEach((item) => {
         const cat = item.dataset.category!;
         if (filter === 'Wszystkie' || cat === filter) {
