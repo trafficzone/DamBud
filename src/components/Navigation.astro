@@ -266,10 +266,21 @@ const navLinks = [
   }
 
   @media (max-width: 768px) {
-    .nav__links  { display: none; }
-    .nav__cta    { display: none; }
+    .nav {
+      background: rgba(17, 17, 17, 0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav__links     { display: none; }
+    .nav__cta       { display: none; }
     .nav__hamburger { display: flex; }
-    .nav__mobile { display: flex; }
+    .nav__mobile    { display: flex; }
+
+    .nav__hamburger span {
+      width: 24px;
+    }
   }
 </style>
 
