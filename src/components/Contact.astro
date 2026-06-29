@@ -81,6 +81,10 @@ const serviceOptions = [
     <!-- Right form -->
     <div class="contact__form-wrap" data-animate="fade-left" data-animate-delay="200">
       <form class="contact__form" id="contact-form" novalidate aria-label="Formularz kontaktowy">
+        <input type="hidden" name="access_key" value="3a8e6767-1d35-497f-91cd-22a856fd4845" />
+        <input type="hidden" name="subject" value="Nowe zapytanie z DamBud.pl" />
+        <input type="hidden" name="from_name" value="Formularz DamBud" />
+        <input type="checkbox" name="botcheck" style="display:none" />
         <div class="contact__form-header">
           <h3 class="contact__form-title">Wyślij zapytanie</h3>
           <p class="contact__form-sub">Odpowiemy w ciągu 24 godzin roboczych.</p>
@@ -463,14 +467,26 @@ const serviceOptions = [
 
     submitBtn.disabled = true;
     submitBtn.querySelector<HTMLSpanElement>('.contact__submit-text')!.textContent = 'Wysyłanie…';
-
-    // Simulate form send (replace with real endpoint)
-    await new Promise((r) => setTimeout(r, 1200));
-
-    // Show success (replace with real response handling)
-    successMsg.hidden = false;
+    successMsg.hidden = true;
     errorMsg.hidden   = true;
-    form.reset();
+
+    try {
+      const data = new FormData(form);
+      const res  = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        successMsg.hidden = false;
+        form.reset();
+      } else {
+        errorMsg.hidden = false;
+      }
+    } catch {
+      errorMsg.hidden = false;
+    }
 
     submitBtn.disabled = false;
     submitBtn.querySelector<HTMLSpanElement>('.contact__submit-text')!.textContent = 'Wyślij zapytanie';
