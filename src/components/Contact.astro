@@ -151,6 +151,11 @@ const serviceOptions = [
           ></textarea>
         </div>
 
+        <!-- CAPTCHA -->
+        <div class="contact__captcha">
+          <div class="h-captcha" data-captcha="true"></div>
+        </div>
+
         <!-- RODO -->
         <div class="contact__rodo">
           <label class="contact__checkbox-label">
@@ -403,6 +408,11 @@ const serviceOptions = [
     font-weight: bold;
   }
 
+  /* CAPTCHA */
+  .contact__captcha {
+    margin-bottom: var(--space-5);
+  }
+
   /* Submit */
   .contact__submit {
     width: 100%;
@@ -450,6 +460,8 @@ const serviceOptions = [
     }
   }
 </style>
+
+<script src="https://web3forms.com/client/script.js" async defer></script>
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;
